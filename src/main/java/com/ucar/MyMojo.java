@@ -91,7 +91,7 @@ public class MyMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project}")
     private MavenProject mavenProject;
 
-    public void execute() throws MojoExecutionException {
+    public void execute() {
         try {
             LoggerUtil.setLog(getLog());
             if (skipRap2) {
@@ -110,19 +110,7 @@ public class MyMojo extends AbstractMojo {
             if (repositoryId != null) {
                 LoggerUtil.getLog().debug("查询到相同仓库名:" + moduleConf.getRepositoryName() + " ,将进行修改覆盖");
             }
-            RepositoryDO repositoryDO = new RepositoryDO();
-            repositoryDO.setName(moduleConf.getRepositoryName());
-            repositoryDO.setDescription(moduleConf.getRepositoryDesc());
-            repositoryDO.setId(repositoryId);
-            //系统生成的仓库,认为拥有者和创建者为系统 1L用户和组织都是系统,仓库必须有创建者
-            repositoryDO.setOwnerId(1L);
-            repositoryDO.setCreatorId(1L);
-            if (moduleConf.getOwnerId() != null) {
-                repositoryDO.setOwnerId(moduleConf.getOwnerId());
-                repositoryDO.setCreatorId(moduleConf.getOwnerId());
-            }
-//        repositoryDO.setOrganizationId(1L);
-            repositoryId = RepositoryDAO.insertOrUpdate(repositoryDO);
+            repositoryId = addOrUpdateRepository(repositoryId);
             addOrUpdateModule(allAdapterClass, repositoryId);
             //没有问题了再提交事务
             MySqlUtil.getConnection().commit();
@@ -342,5 +330,22 @@ public class MyMojo extends AbstractMojo {
         } else if (clazz.isArray()) {
             return true;
         } else return Map.class.isAssignableFrom(clazz);
+    }
+
+    private Long addOrUpdateRepository(Long repositoryId) throws Exception {
+        RepositoryDO repositoryDO = new RepositoryDO();
+        repositoryDO.setName(moduleConf.getRepositoryName());
+        repositoryDO.setDescription(moduleConf.getRepositoryDesc());
+        repositoryDO.setId(repositoryId);
+        //系统生成的仓库,认为拥有者和创建者为系统 1L用户和组织都是系统,仓库必须有创建者
+        repositoryDO.setOwnerId(1L);
+        repositoryDO.setCreatorId(1L);
+        if (moduleConf.getOwnerId() != null) {
+            repositoryDO.setOwnerId(moduleConf.getOwnerId());
+            repositoryDO.setCreatorId(moduleConf.getOwnerId());
+        }
+//        repositoryDO.setOrganizationId(1L);
+        repositoryId = RepositoryDAO.insertOrUpdate(repositoryDO);
+        return repositoryId;
     }
 }
