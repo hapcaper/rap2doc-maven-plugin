@@ -126,7 +126,7 @@ public class ClassUtil {
     /**
      * 以文件的形式来获取包下的Adapter的Class
      *
-     * @param packageName 报名
+     * @param packageName 包名
      * @param packagePath 包路径
      * @param recursive 是否递归迭代解析
      * @param classes 解析出来的类将会添加到该集合中

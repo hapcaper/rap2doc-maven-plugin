@@ -38,6 +38,8 @@ import com.ucar.util.MySqlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.jetbrains.annotations.Contract;
@@ -55,11 +57,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Goal which touches a timestamp file.
  *
- * @goal touch
- * @phase process-sources
  */
+@Mojo(name = "apiDocument",defaultPhase = LifecyclePhase.COMPILE)
 public class MyMojo extends AbstractMojo {
 
     /**
@@ -120,7 +120,7 @@ public class MyMojo extends AbstractMojo {
                 getLog().error("倒入数据失败 回滚数据");
                 throwable.printStackTrace();
             } catch (Throwable throwables) {
-                getLog().error("数据库回滚失败" + JSONObject.toJSONString(throwable));
+                getLog().error(throwables);
             }
             getLog().debug(throwable);
         } finally {
