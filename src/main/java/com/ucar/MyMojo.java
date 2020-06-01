@@ -152,6 +152,7 @@ public class MyMojo extends AbstractMojo {
                 List<PropertyDO> responseResult = null;
                 InterfaceDO interfaceDO = new InterfaceDO();
                 interfaceDO.setUrl(adapterAnno.value());
+                interfaceDO.setName(adapterAnno.name());
                 Class<?> apiParamClass = adapterAnno.apiParam();
                 Class<?> apiResultClass = adapterAnno.apiResult();
                 if (!apiParamClass.equals(NoParam.class)) {//adapter上有入参用adapter上的
@@ -220,9 +221,9 @@ public class MyMojo extends AbstractMojo {
                 PropertyDO property;
                 Class<?> type = declaredField.getType();
                 property = new PropertyDO();
+                property.setScope(scope);
                 if (declaredField.isAnnotationPresent(ApiProperty.class)) {
                     propertyAnno = declaredField.getAnnotation(ApiProperty.class);
-                    property.setScope(scope);
                     property.setName(propertyAnno.value());
                     property.setRequired(propertyAnno.required() ? 1 : 0);
                     property.setDescription(propertyAnno.desc());
