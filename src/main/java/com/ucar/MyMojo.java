@@ -237,12 +237,12 @@ public class MyMojo extends AbstractMojo {
                 if (StringUtils.isBlank(property.getName())) {//没有注释取字段名
                     property.setName(name);
                 }
-                if (type.equals(String.class)) {
+                if (type.equals(String.class) || type.equals(char.class) || type.equals(Character.class)) {
                     property.setType(PropertyTypeEnum.STRING.getName());
                 } else if (Number.class.isAssignableFrom(type)) {
                     property.setType(PropertyTypeEnum.NUMBER.getName());
                 } else if (type.equals(byte.class) || type.equals(int.class) || type.equals(long.class)
-                        || type.equals(float.class) || type.equals(double.class)) {
+                        || type.equals(float.class) || type.equals(double.class) || type.equals(short.class)) {
                     property.setType(PropertyTypeEnum.NUMBER.getName());
                 } else if (type.equals(boolean.class) || type.equals(Boolean.class)) {
                     property.setType(PropertyTypeEnum.BOOLEAN.getName());
@@ -261,7 +261,7 @@ public class MyMojo extends AbstractMojo {
                     }
                 } else if (type.isArray()) {
                     property.setType(PropertyTypeEnum.ARRAY.getName());
-                    property.setPropertyDOList(resolveFields(type, scope));
+                    property.setPropertyDOList(resolveFields(type.getComponentType(), scope));
                 } else if (Map.class.isAssignableFrom(type)) {
                     property.setType(PropertyTypeEnum.MAP.getName());
                 } else {
