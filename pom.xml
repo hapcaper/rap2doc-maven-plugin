@@ -4,13 +4,13 @@
     <groupId>com.ucar</groupId>
     <artifactId>rap2doc-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>2.0-SNAPSHOT</version>
+    <version>3.0-SNAPSHOT</version>
     <name>rap2doc-maven-plugin Maven Mojo</name>
     <url>http://maven.apache.org</url>
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <maven.compiler.source>9</maven.compiler.source>
+        <maven.compiler.target>9</maven.compiler.target>
+        <maven.compiler.compilerVersion>9</maven.compiler.compilerVersion>
     </properties>
     <dependencies>
         <dependency>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.ucar</groupId>
             <artifactId>rap2-anno</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>3.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
