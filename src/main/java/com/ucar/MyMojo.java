@@ -16,7 +16,6 @@ package com.ucar;
  * limitations under the License.
  */
 
-import com.alibaba.fastjson.JSONObject;
 import com.ucar.anno.ApiAdapter;
 import com.ucar.anno.ApiProperty;
 import com.ucar.conf.DataBaseConf;
