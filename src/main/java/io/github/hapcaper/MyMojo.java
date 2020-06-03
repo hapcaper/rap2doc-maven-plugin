@@ -16,11 +16,11 @@ package io.github.hapcaper;
  * limitations under the License.
  */
 
-import com.ucar.anno.ApiAdapter;
-import com.ucar.anno.ApiProperty;
+import io.github.hapcaper.anno.ApiAdapter;
+import io.github.hapcaper.anno.ApiProperty;
 import io.github.hapcaper.conf.DataBaseConf;
 import io.github.hapcaper.conf.ModuleConf;
-import com.ucar.constant.PropertyTypeEnum;
+import io.github.hapcaper.constant.PropertyTypeEnum;
 import io.github.hapcaper.dao.InterfaceDAO;
 import io.github.hapcaper.dao.ModuleDAO;
 import io.github.hapcaper.dao.PropertyDAO;
@@ -29,8 +29,8 @@ import io.github.hapcaper.entity.InterfaceDO;
 import io.github.hapcaper.entity.ModuleDO;
 import io.github.hapcaper.entity.PropertyDO;
 import io.github.hapcaper.entity.RepositoryDO;
-import com.ucar.module.NoParam;
-import com.ucar.module.NoResult;
+import io.github.hapcaper.module.NoParam;
+import io.github.hapcaper.module.NoResult;
 import io.github.hapcaper.util.ClassUtil;
 import io.github.hapcaper.util.LoggerUtil;
 import io.github.hapcaper.util.MySqlUtil;
