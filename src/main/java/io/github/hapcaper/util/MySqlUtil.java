@@ -1,8 +1,8 @@
-package com.ucar.util;
+package io.github.hapcaper.util;
 
 
 
-import com.ucar.conf.DataBaseConf;
+import io.github.hapcaper.conf.DataBaseConf;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package com.ucar.conf;
+package io.github.hapcaper.conf;
 
 import org.apache.maven.plugins.annotations.Parameter;
 

@@ -1,7 +1,7 @@
-package com.ucar.util;
+package io.github.hapcaper.util;
 
 
-import com.ucar.anno.ApiAdapter;
+import io.github.hapcaper.anno.ApiAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

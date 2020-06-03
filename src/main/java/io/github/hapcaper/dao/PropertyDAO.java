@@ -1,8 +1,8 @@
-package com.ucar.dao;
+package io.github.hapcaper.dao;
 
-import com.ucar.entity.PropertyDO;
-import com.ucar.util.LoggerUtil;
-import com.ucar.util.MySqlUtil;
+import io.github.hapcaper.entity.PropertyDO;
+import io.github.hapcaper.util.LoggerUtil;
+import io.github.hapcaper.util.MySqlUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

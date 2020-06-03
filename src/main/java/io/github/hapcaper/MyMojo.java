@@ -1,4 +1,4 @@
-package com.ucar;
+package io.github.hapcaper;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
@@ -16,25 +16,24 @@ package com.ucar;
  * limitations under the License.
  */
 
-import com.alibaba.fastjson.JSONObject;
-import com.ucar.anno.ApiAdapter;
-import com.ucar.anno.ApiProperty;
-import com.ucar.conf.DataBaseConf;
-import com.ucar.conf.ModuleConf;
-import com.ucar.constant.PropertyTypeEnum;
-import com.ucar.dao.InterfaceDAO;
-import com.ucar.dao.ModuleDAO;
-import com.ucar.dao.PropertyDAO;
-import com.ucar.dao.RepositoryDAO;
-import com.ucar.entity.InterfaceDO;
-import com.ucar.entity.ModuleDO;
-import com.ucar.entity.PropertyDO;
-import com.ucar.entity.RepositoryDO;
-import com.ucar.module.NoParam;
-import com.ucar.module.NoResult;
-import com.ucar.util.ClassUtil;
-import com.ucar.util.LoggerUtil;
-import com.ucar.util.MySqlUtil;
+import io.github.hapcaper.anno.ApiAdapter;
+import io.github.hapcaper.anno.ApiProperty;
+import io.github.hapcaper.conf.DataBaseConf;
+import io.github.hapcaper.conf.ModuleConf;
+import io.github.hapcaper.constant.PropertyTypeEnum;
+import io.github.hapcaper.dao.InterfaceDAO;
+import io.github.hapcaper.dao.ModuleDAO;
+import io.github.hapcaper.dao.PropertyDAO;
+import io.github.hapcaper.dao.RepositoryDAO;
+import io.github.hapcaper.entity.InterfaceDO;
+import io.github.hapcaper.entity.ModuleDO;
+import io.github.hapcaper.entity.PropertyDO;
+import io.github.hapcaper.entity.RepositoryDO;
+import io.github.hapcaper.module.NoParam;
+import io.github.hapcaper.module.NoResult;
+import io.github.hapcaper.util.ClassUtil;
+import io.github.hapcaper.util.LoggerUtil;
+import io.github.hapcaper.util.MySqlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -238,12 +237,12 @@ public class MyMojo extends AbstractMojo {
                 if (StringUtils.isBlank(property.getName())) {//没有注释取字段名
                     property.setName(name);
                 }
-                if (type.equals(String.class)) {
+                if (type.equals(String.class) || type.equals(char.class) || type.equals(Character.class)) {
                     property.setType(PropertyTypeEnum.STRING.getName());
                 } else if (Number.class.isAssignableFrom(type)) {
                     property.setType(PropertyTypeEnum.NUMBER.getName());
                 } else if (type.equals(byte.class) || type.equals(int.class) || type.equals(long.class)
-                        || type.equals(float.class) || type.equals(double.class)) {
+                        || type.equals(float.class) || type.equals(double.class) || type.equals(short.class)) {
                     property.setType(PropertyTypeEnum.NUMBER.getName());
                 } else if (type.equals(boolean.class) || type.equals(Boolean.class)) {
                     property.setType(PropertyTypeEnum.BOOLEAN.getName());
@@ -262,7 +261,7 @@ public class MyMojo extends AbstractMojo {
                     }
                 } else if (type.isArray()) {
                     property.setType(PropertyTypeEnum.ARRAY.getName());
-                    property.setPropertyDOList(resolveFields(type, scope));
+                    property.setPropertyDOList(resolveFields(type.getComponentType(), scope));
                 } else if (Map.class.isAssignableFrom(type)) {
                     property.setType(PropertyTypeEnum.MAP.getName());
                 } else {
