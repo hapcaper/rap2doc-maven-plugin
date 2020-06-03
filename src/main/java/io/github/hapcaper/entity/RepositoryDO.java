@@ -1,4 +1,4 @@
-package com.ucar.entity;
+package io.github.hapcaper.entity;
 
 import java.util.Date;
 

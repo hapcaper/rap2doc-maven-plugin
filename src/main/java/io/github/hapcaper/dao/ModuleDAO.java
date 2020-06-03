@@ -1,7 +1,7 @@
-package com.ucar.dao;
+package io.github.hapcaper.dao;
 
-import com.ucar.entity.ModuleDO;
-import com.ucar.util.MySqlUtil;
+import io.github.hapcaper.entity.ModuleDO;
+import io.github.hapcaper.util.MySqlUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,4 +1,4 @@
-package com.ucar;
+package io.github.hapcaper;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
@@ -18,22 +18,22 @@ package com.ucar;
 
 import com.ucar.anno.ApiAdapter;
 import com.ucar.anno.ApiProperty;
-import com.ucar.conf.DataBaseConf;
-import com.ucar.conf.ModuleConf;
+import io.github.hapcaper.conf.DataBaseConf;
+import io.github.hapcaper.conf.ModuleConf;
 import com.ucar.constant.PropertyTypeEnum;
-import com.ucar.dao.InterfaceDAO;
-import com.ucar.dao.ModuleDAO;
-import com.ucar.dao.PropertyDAO;
-import com.ucar.dao.RepositoryDAO;
-import com.ucar.entity.InterfaceDO;
-import com.ucar.entity.ModuleDO;
-import com.ucar.entity.PropertyDO;
-import com.ucar.entity.RepositoryDO;
+import io.github.hapcaper.dao.InterfaceDAO;
+import io.github.hapcaper.dao.ModuleDAO;
+import io.github.hapcaper.dao.PropertyDAO;
+import io.github.hapcaper.dao.RepositoryDAO;
+import io.github.hapcaper.entity.InterfaceDO;
+import io.github.hapcaper.entity.ModuleDO;
+import io.github.hapcaper.entity.PropertyDO;
+import io.github.hapcaper.entity.RepositoryDO;
 import com.ucar.module.NoParam;
 import com.ucar.module.NoResult;
-import com.ucar.util.ClassUtil;
-import com.ucar.util.LoggerUtil;
-import com.ucar.util.MySqlUtil;
+import io.github.hapcaper.util.ClassUtil;
+import io.github.hapcaper.util.LoggerUtil;
+import io.github.hapcaper.util.MySqlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
